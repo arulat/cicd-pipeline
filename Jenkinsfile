@@ -5,7 +5,7 @@ pipeline {
       agent any
       steps {
         sh 'rm -rf cicd-pipeline &&  git clone https://github.com/arulat/cicd-pipeline.git'
-        dir(path: 'cicd-pipeline')
+        sh 'cd cicd-pipeline'
       }
     }
 
