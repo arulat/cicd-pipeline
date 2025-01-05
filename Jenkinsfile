@@ -4,7 +4,8 @@ pipeline {
     stage('Git Checkout') {
       agent any
       steps {
-        sh 'git clone https://github.com/arulat/cicd-pipeline.git && cd cicd-pipeline'
+        sh 'rm -rf cicd-pipeline &&  git clone https://github.com/arulat/cicd-pipeline.git'
+        dir(path: 'cicd-pipeline')
       }
     }
 
