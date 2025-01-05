@@ -4,7 +4,7 @@ pipeline {
     stage('Test') {
       agent any
       steps {
-        echo 'test $foo'
+        echo 'test 2'
       }
     }
 
