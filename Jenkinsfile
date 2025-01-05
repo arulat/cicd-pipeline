@@ -2,10 +2,14 @@ pipeline {
   agent any
   stages {
     stage('Test') {
+      agent any
       steps {
-        echo 'test'
+        echo 'test $foo'
       }
     }
 
+  }
+  environment {
+    foo = 'bar'
   }
 }
