@@ -8,5 +8,11 @@ pipeline {
       }
     }
 
+    stage('Build App') {
+      steps {
+        sh 'cd scripts && ./build.sh'
+      }
+    }
+
   }
 }
