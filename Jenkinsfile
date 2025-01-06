@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Git Checkout') {
       agent any
@@ -9,12 +9,14 @@ pipeline {
     }
 
     stage('Build App') {
+      agent any
       steps {
         sh 'bash scripts/build.sh'
       }
     }
 
     stage('Tests') {
+      agent any
       steps {
         sh './scripts/test.sh'
       }
