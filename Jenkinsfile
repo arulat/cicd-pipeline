@@ -10,13 +10,13 @@ pipeline {
 
     stage('Build App') {
       steps {
-        sh 'cd scripts'
+        sh 'bash scripts/build.sh'
       }
     }
 
     stage('Tests') {
       steps {
-        sh 'echo \'tests success\''
+        sh './scripts/test.sh'
       }
     }
 
