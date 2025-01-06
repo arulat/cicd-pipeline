@@ -11,7 +11,6 @@ pipeline {
     stage('Build App') {
       steps {
         sh 'cd scripts && bash build.sh'
-        nodejs 'node'
       }
     }
 
