@@ -10,7 +10,6 @@ pipeline {
 
     stage('Build App') {
       steps {
-        sh 'dpkg install node && dpkg install npm'
         sh 'cd scripts && bash build.sh'
       }
     }
