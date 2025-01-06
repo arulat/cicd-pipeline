@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:16-alpine'
-    }
-
-  }
+  agent any
   stages {
     stage('Git Checkout') {
       agent any
@@ -29,7 +24,10 @@ pipeline {
 
     stage('Build Image') {
       agent {
-        dockerfile true
+        docker {
+          image 'node:16-alpine'
+        }
+
       }
       steps {
         sh 'docker build -t app .'
