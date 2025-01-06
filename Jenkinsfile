@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-    nodejs '23.5.0'
-  }
   stages {
     stage('Git Checkout') {
       agent any
@@ -13,12 +10,12 @@ pipeline {
 
     stage('Build App') {
       steps {
-        nodejs('node_23') {
-          sh 'cd scripts && bash build.sh'
-        }
-
+        sh 'cd scripts && bash build.sh'
       }
     }
 
+  }
+  tools {
+    nodejs '23.5.0'
   }
 }
