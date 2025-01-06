@@ -1,12 +1,13 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:18-alpine3.21'
-    }
-
-  }
+  agent any
   stages {
     stage('Build Image') {
+      agent {
+        docker {
+          image 'node:18-alpine3.21'
+        }
+
+      }
       steps {
         sh 'docker -v'
       }
