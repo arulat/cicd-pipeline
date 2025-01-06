@@ -1,27 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Git Checkout') {
-      agent any
-      steps {
-        sh 'rm -rf cicd-pipeline &&  git clone https://github.com/arulat/cicd-pipeline.git && cd cicd-pipeline '
-      }
-    }
-
-    stage('Build App') {
-      agent any
-      steps {
-        sh 'echo \' success\''
-      }
-    }
-
-    stage('Tests') {
-      agent any
-      steps {
-        sh 'echo \' success\''
-      }
-    }
-
     stage('Build Image') {
       agent {
         docker {
@@ -30,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'docker build -t app .'
+        sh 'docker -v'
       }
     }
 
