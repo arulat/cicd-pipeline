@@ -10,7 +10,7 @@ pipeline {
 
     stage('Build App') {
       steps {
-        sh 'cd scripts && bash ./build.sh'
+        sh 'cd scripts && bash build.sh'
       }
     }
 
