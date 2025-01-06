@@ -10,13 +10,25 @@ pipeline {
 
     stage('Build App') {
       steps {
-        sh 'cd scripts && bash build.sh'
+        sh 'cd scripts'
       }
     }
 
     stage('Tests') {
       steps {
         sh './scripts/test.sh'
+      }
+    }
+
+    stage('Build Image') {
+      agent {
+        docker {
+          image 'node:7.8.0'
+        }
+
+      }
+      steps {
+        sh 'docker build -t app .'
       }
     }
 
