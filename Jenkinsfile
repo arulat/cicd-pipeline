@@ -10,7 +10,7 @@ pipeline {
 
     stage('Build App') {
       steps {
-        nodejs('Node_23') {
+        nodejs('node_23') {
           sh 'cd scripts && bash build.sh'
         }
 
