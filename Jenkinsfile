@@ -22,10 +22,7 @@ pipeline {
 
     stage('Build Image') {
       agent {
-        docker {
-          image 'node:7.8.0'
-        }
-
+        dockerfile true
       }
       steps {
         sh 'docker build -t app .'
