@@ -14,6 +14,12 @@ pipeline {
       }
     }
 
+    stage('Tests') {
+      steps {
+        sh './test.sh'
+      }
+    }
+
   }
   tools {
     nodejs '23.5.0'
