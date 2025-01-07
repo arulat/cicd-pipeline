@@ -10,13 +10,14 @@ pipeline {
     stage('Build') {
       steps {
         nodejs('node') {
-          sh '  npm --version'
+          sh 'bash scripts/build.sh'
         }
 
       }
     }
 
     stage('Tests') {
+      agent any
       steps {
         nodejs('node') {
           sh './scripts/test.sh'
