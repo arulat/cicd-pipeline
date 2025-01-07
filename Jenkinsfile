@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-    nodejs 'node'
-  }
   stages {
     stage('Checkout') {
       steps {
@@ -31,9 +28,12 @@ pipeline {
 
     stage('Build Image') {
       steps {
-        sh 'docker build -t cicd-app .'
+        sh 'docker --version'
       }
     }
 
+  }
+  tools {
+    nodejs 'node'
   }
 }
