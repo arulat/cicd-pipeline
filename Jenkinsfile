@@ -28,19 +28,19 @@ pipeline {
 
     stage('Build Image') {
       steps {
-        sh '# docker build -t cicd-app:test .'
+        sh 'docker build -t cicd-app:latest .'
       }
     }
 
     stage('Push Image') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', 
-                                                                                 usernameVariable: 'DOCKER_USERNAME', 
-                                                                                 passwordVariable: 'DOCKER_PASSWORD')]) {
+                                                                                         usernameVariable: 'DOCKER_USERNAME', 
+                                                                                         passwordVariable: 'DOCKER_PASSWORD')]) {
           sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                    docker tag cicd-app $DOCKER_USERNAME/cicd-app:test
-                    docker push $DOCKER_USERNAME/cicd-app:test'''
+                    docker tag cicd-app $DOCKER_USERNAME/cicd-app:latest
+                    docker push $DOCKER_USERNAME/cicd-app:latest'''
         }
 
       }
