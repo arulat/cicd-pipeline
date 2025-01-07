@@ -28,7 +28,13 @@ pipeline {
 
     stage('Build Image') {
       steps {
-        sh 'docker build -t cicd-app:test .'
+        sh '# docker build -t cicd-app:test .'
+      }
+    }
+
+    stage('Push Image') {
+      steps {
+        sh 'echo \'test\''
       }
     }
 
