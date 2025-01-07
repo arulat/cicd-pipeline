@@ -31,6 +31,7 @@ pipeline {
         script {
           docker.build 'cicd-app:test'
         }
+
       }
     }
 
