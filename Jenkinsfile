@@ -28,7 +28,6 @@ pipeline {
 
     stage('Build Image') {
       steps {
-        sh 'docker --version && ls -al'
         sh 'docker build -t cicd-app .'
       }
     }
