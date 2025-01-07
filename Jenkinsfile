@@ -29,7 +29,7 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          docker.build cicd-app:test
+          docker.build 'cicd-app:test'
         }
       }
     }
