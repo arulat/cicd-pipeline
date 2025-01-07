@@ -28,10 +28,7 @@ pipeline {
 
     stage('Build Image') {
       steps {
-        script {
-          docker.build 'cicd-app:test'
-        }
-
+        sh 'docker build -t cicd-app:test .'
       }
     }
 
