@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'echo \'success\''
+        sh 'rm -rf cicd-pipeline &&  git clone https://github.com/arulat/cicd-pipeline.git && cd cicd-pipeline'
       }
     }
 
     stage('Build') {
       steps {
         nodejs('node') {
-          sh 'echo \'success\''
+          sh 'bash /scripts/build.sh'
         }
 
       }
@@ -20,7 +20,7 @@ pipeline {
       agent any
       steps {
         nodejs('node') {
-          sh 'echo \'success\''
+          sh './scripts/test.sh'
         }
 
       }
@@ -35,8 +35,8 @@ pipeline {
     stage('Push Image') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', 
-                                                                                         usernameVariable: 'DOCKER_USERNAME', 
-                                                                                         passwordVariable: 'DOCKER_PASSWORD')]) {
+                                                                                                 usernameVariable: 'DOCKER_USERNAME', 
+                                                                                                 passwordVariable: 'DOCKER_PASSWORD')]) {
           sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
                     docker tag cicd-app $DOCKER_USERNAME/cicd-app:latest
