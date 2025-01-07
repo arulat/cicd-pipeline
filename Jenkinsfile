@@ -39,7 +39,7 @@ pipeline {
                                                                  passwordVariable: 'DOCKER_PASSWORD')]) {
           sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                    docker tag cicd-app $DOCKER_USERNAME/cicd-app:test
+                    docker tag cicd-app:test $DOCKER_USERNAME/cicd-app:test
                     docker push $DOCKER_USERNAME/cicd-app:test'''
         }
 
