@@ -26,5 +26,11 @@ pipeline {
       }
     }
 
+    stage('Build Image') {
+      steps {
+        sh 'build -t cicd-app .'
+      }
+    }
+
   }
 }
