@@ -20,7 +20,7 @@ pipeline {
       agent any
       steps {
         nodejs('node') {
-          sh 'echo \'success\''
+          sh 'echo \'success !\''
         }
 
       }
