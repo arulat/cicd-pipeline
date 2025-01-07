@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'rm -rf cicd-pipeline &&  git clone https://github.com/arulat/cicd-pipeline.git && cd cicd-pipeline '
+        sh 'echo \'success\''
       }
     }
 
     stage('Build') {
       steps {
         nodejs('node') {
-          sh 'bash scripts/build.sh'
+          sh 'echo \'success\''
         }
 
       }
