@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         nodejs('node') {
-          sh '  bash scripts/build.sh'
+          sh '  npm --version'
         }
 
       }
@@ -18,7 +18,10 @@ pipeline {
 
     stage('Tests') {
       steps {
-        sh './scripts/test.sh'
+        nodejs('node') {
+          sh './scripts/test.sh'
+        }
+
       }
     }
 
