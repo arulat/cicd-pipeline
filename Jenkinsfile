@@ -34,15 +34,16 @@ pipeline {
 
     stage('Push Image') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', 
-                                                 usernameVariable: 'DOCKER_USERNAME', 
-                                                 passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh '''
+        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', 
+                                                         usernameVariable: 'DOCKER_USERNAME', 
+                                                         passwordVariable: 'DOCKER_PASSWORD')]) {
+          sh '''
                     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
                     docker tag cicd-app $DOCKER_USERNAME/cicd-app:latest
                     docker push $DOCKER_USERNAME/cicd-app:latest
                     '''
-                }
+        }
+
       }
     }
 
